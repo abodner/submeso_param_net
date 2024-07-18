@@ -1,1 +1,0 @@
-# this is a new test after the path of git has been updated to the new version
