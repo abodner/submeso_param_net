@@ -3,9 +3,10 @@ Repo to train a Neural Network parmeterization for submesoscale vertical buoyanc
 
 This is the code repository for Bodner, Balwada, and Zanna. A Data-Driven Approach for Parameterizing Ocean Submesoscale  Buoyancy Fluxes (in prep).
 
-Plotting scripts are in the folder notebooks/plotting
+* Plotting scripts are in `notebooks`
 
-Code for processing the LLC4320 to generate training data is under scripts/preprocess_llc4320
+* Code for preprocessing the LLC4320 to generate training data is under `scripts/preprocess_llc4320/`
 
-The data loader is located in submeso_ml/dadataset.py 
-The CNN recieved parameters from ** and calls submeso_ml/models/fcnn.py and submeso_ml/systems/regression_system.py during training.
+* Postprocessing diagnostics are under `scripts/postprocess/`
+
+* Examples for training the CNN under the various test cases discussed in the paper can be found under `scripts/nn_training_examples`. These scripts correspond with the modules found in `submeso_ml` to perscribe the CNN architecture and hyperparameters, as well as the input features, specific regions/seasons, and filter scale.
