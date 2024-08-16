@@ -11,7 +11,7 @@ class SubmesoDataset(Dataset):
         self.seed=seed
         self.train_split=train_split
         self.input_features=input_features
-        self.path= '/scratch/ab10313/pleiades/NN_data_'+'%s' % res+'/'
+        self.path= '/orcd/data/abodner/001/greene/scratch/pleiades/NN_data_'+'%s' % res+'/'
         self.loc = loc_num
 
         # load features for input

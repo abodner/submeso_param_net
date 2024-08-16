@@ -1,6 +1,7 @@
 
 import torch
 import torch.nn as nn
+import torch.nn.init as init
 import numpy as np
 #import pyqg_explorer.util.transforms as transforms
 import os
@@ -62,7 +63,23 @@ class FCNN(nn.Module):
             ## Output layer
             blocks.extend(make_block(32,self.config["output_channels"],self.config["kernel_hidden"],'False',False))
         self.conv = nn.Sequential(*blocks)
+        
+# Initialize weights and biases
+        self._initialize_weights()
+    
+    
+    def _initialize_weights(self):
+        """
+        Initialize weights and biases of all layers with a uniform distribution.
+        """
+        for m in self.modules():
+            if isinstance(m, (nn.Conv2d, nn.Linear)):
+                init.uniform_(m.weight, a=-self.config["init_bound"], b=self.config["init_bound"])
+                if m.bias is not None:
+                    init.uniform_(m.bias, a=-self.config["init_bound"], b=self.config["init_bound"])
 
+                        
+            
     def forward(self, x):
         x = self.conv(x)
         return x
